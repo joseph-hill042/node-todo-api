@@ -1,0 +1,23 @@
+{
+  "name": "todo-api",
+  "version": "1.0.0",
+  "description": "An API written in Node using MongoDB for data store.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "NodeJS",
+    "MongoDB",
+    "API"
+  ],
+  "author": "Joseph Hill",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/node": "^10.12.18",
+    "fuse-box": "^3.6.0",
+    "typescript": "^3.2.2",
+    "uglify-es": "^3.3.9",
+    "uglify-js": "^3.4.9"
+  }
+}
