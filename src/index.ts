@@ -12,7 +12,7 @@ app.use(bodyParser.json())
 app.get('/', (req, res, next) => {
   res.send('<h1>Welcome to the NodeJS Todo API</h1>')
 })
-app.post('/todos', (req, res, next) => {
+app.post('/todos', (req, res) => {
   const todo = new Todo({ text: req.body.text })
   todo.save().then(
     doc => {
@@ -20,6 +20,16 @@ app.post('/todos', (req, res, next) => {
     },
     err => {
       res.status(400).send(err.message)
+    }
+  )
+})
+app.get('/todos', (req, res) => {
+  Todo.find().then(
+    todos => {
+      res.send({ todos })
+    },
+    err => {
+      res.status(400).send(err)
     }
   )
 })
