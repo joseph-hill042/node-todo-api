@@ -1,5 +1,5 @@
-import express from 'express'
-import bodyParser from 'body-parser'
+import * as express from 'express'
+import * as bodyParser from 'body-parser'
 import { Mongoose } from './server/db/mongoose'
 import { User } from './server/models/user'
 import { Todo } from './server/models/todo'
@@ -24,6 +24,6 @@ app.post('/todos', (req, res, next) => {
   )
 })
 
-app.listen(3000, () => {
+export const server = app.listen(3000, () => {
   console.info('Server listening at http://localhost:3000')
 })
