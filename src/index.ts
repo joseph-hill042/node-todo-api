@@ -7,7 +7,6 @@ import { Todo } from './server/models/todo'
 const app = express()
 Mongoose.connect()
 const validator = Mongoose.ValidateObjectId()
-console.info(Mongoose.ObjectId())
 
 app.use(bodyParser.json())
 

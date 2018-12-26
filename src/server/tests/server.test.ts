@@ -1,13 +1,16 @@
 import * as request from 'supertest'
 import { server } from '../..'
 import { Todo } from '../models/todo'
+import { Mongoose } from '../db/mongoose'
 const api = request(server)
 
 const todos = [
   {
+    _id: Mongoose.ObjectId(),
     text: 'First test todo',
   },
   {
+    _id: Mongoose.ObjectId(),
     text: 'Second test todo',
   },
 ]
@@ -42,6 +45,29 @@ describe('Server', () => {
         .expect(res => {
           expect(res.body.todos.length).toBe(2)
         })
+        .end(done)
+    })
+  })
+  describe('GET /todos/:id', () => {
+    it('should return a todo doc', done => {
+      api
+        .get(`/todos/${todos[0]._id.toHexString()}`)
+        .expect(200)
+        .expect(res => {
+          expect(res.body.todo.text).toBe(todos[0].text)
+        })
+        .end(done)
+    })
+    it('should return 404 if todo not found', done => {
+      api
+        .get(`/todos/${Mongoose.ObjectId().toHexString()}`)
+        .expect(404)
+        .end(done)
+    })
+    it('should return 404 for non-object ids', done => {
+      api
+        .get('/todos/12345')
+        .expect(404)
         .end(done)
     })
   })
