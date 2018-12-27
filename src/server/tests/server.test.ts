@@ -23,20 +23,6 @@ describe('Server', () => {
       })
       .then(() => done())
   })
-  describe('GET /', () => {
-    it('should return the greeting text', done => {
-      const response = '<h1>Welcome to the NodeJS Todo API</h1>'
-
-      api
-        .get('/')
-        .send(response)
-        .expect(200)
-        .expect(res => {
-          expect(res.text).toMatch(response)
-        })
-        .end(done)
-    })
-  })
   describe('GET /todos', () => {
     it('should get all todos', done => {
       api

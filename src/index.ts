@@ -11,9 +11,6 @@ const validator = Mongoose.ValidateObjectId()
 
 app.use(bodyParser.json())
 
-app.get('/', (req, res, next) => {
-  res.send('<h1>Welcome to the NodeJS Todo API</h1>')
-})
 app.post('/todos', (req, res) => {
   const todo = new Todo({ text: req.body.text })
   todo.save().then(
