@@ -14,8 +14,9 @@ context(
         plugins: [
           EnvPlugin({
             PORT: '8080',
-            MONGODB_URI:
-              'mongodb://root:declan1124@ds251598.mlab.com:51598/node-todo-api',
+            MONGODB_URI: `mongodb://root:${encodeURIComponent(
+              'decl@n1124'
+            )}@ds251598.mlab.com:51598/node-todo-api`,
           }),
           this.isProduction &&
             QuantumPlugin({

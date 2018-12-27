@@ -50,9 +50,6 @@ app.get('/todos/:id', (req, res) => {
     })
 })
 
-export const server = app.listen(port, () => {
-  // @ts-ignore
-  console.info(JSON.stringify(process.env.PORT, undefined, 2))
-  console.info(JSON.stringify(process.env.HOME, undefined, 2))
-  console.info(JSON.stringify(process.env.NODE_ENV, undefined, 2))
+export const server = app.listen(port, (req, res) => {
+  console.info(`API Server running`)
 })
