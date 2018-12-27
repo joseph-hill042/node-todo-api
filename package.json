@@ -5,9 +5,13 @@
   "main": "index.js",
   "scripts": {
     "dev": "node fuse.js",
-    "start": "node dist/app.js",
-    "clean": "node fuse clean",
+    "postinstall": "npm run dist",
+    "start": "node dist/server.js",
+    "dist": "node fuse dist",
     "test": "jest"
+  },
+  "engines": {
+    "node": "10.13.0"
   },
   "keywords": [
     "NodeJS",

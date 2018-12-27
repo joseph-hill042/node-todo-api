@@ -5,6 +5,7 @@ import { User } from './server/models/user'
 import { Todo } from './server/models/todo'
 
 const app = express()
+const port = process.env.PORT || 3000
 Mongoose.connect()
 const validator = Mongoose.ValidateObjectId()
 
@@ -51,6 +52,6 @@ app.get('/todos/:id', (req, res) => {
     })
 })
 
-export const server = app.listen(3000, () => {
-  console.info('Server listening at http://localhost:3000')
+export const server = app.listen(port, () => {
+  console.info(`Server listening at http://localhost:${port}`)
 })
