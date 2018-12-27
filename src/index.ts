@@ -54,7 +54,7 @@ export const server = app.listen(port, '0.0.0.0', () => {
   console.info(
     '%s server listening at http://%s:%s',
     process.env.NODE_ENV,
-    app.get('host'),
-    app.get('port')
+    process.env.HOST,
+    process.env.PORT
   )
 })
