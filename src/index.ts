@@ -9,6 +9,7 @@ const port = process.env.PORT || 3000
 Mongoose.connect()
 const validator = Mongoose.ValidateObjectId()
 
+app.set('port', port)
 app.use(bodyParser.json())
 
 app.post('/todos', (req, res) => {
@@ -49,7 +50,6 @@ app.get('/todos/:id', (req, res) => {
     })
 })
 
-// @ts-ignore
-export const server = app.listen(port, '0.0.0.0', () => {
-  console.info(process.env)
+export const server = app.listen(app.get('port'), () => {
+  console.info(`API server running on port ${app.get('port')}`)
 })
