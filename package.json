@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "node fuse.js",
     "postinstall": "npm run dist",
-    "start": "node dist/server.js",
+    "start": "node dist/*-server.js",
     "dist": "node fuse dist",
     "test": "jest"
   },
