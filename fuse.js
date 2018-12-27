@@ -1,4 +1,4 @@
-const { FuseBox, Sparky, QuantumPlugin } = require('fuse-box')
+const { FuseBox, Sparky, QuantumPlugin, EnvPlugin } = require('fuse-box')
 const { src, task, watch, context, fuse } = require('fuse-box/sparky')
 
 context(
@@ -12,11 +12,12 @@ context(
         sourceMaps: true,
         allowSyntheticDefaultImports: true,
         plugins: [
+          EnvPlugin({ PORT: '8080' }),
           this.isProduction &&
             QuantumPlugin({
               bakeApiIntoBundle: 'server',
-              uglify: true,
-              treeshake: true,
+              uglify: false,
+              treeshake: false,
             }),
         ],
       })

@@ -6,10 +6,10 @@ import { Todo } from './server/models/todo'
 
 const app = express()
 const port = process.env.PORT
+console.info(process.env)
 Mongoose.connect()
 const validator = Mongoose.ValidateObjectId()
 
-app.set('port', port)
 app.use(bodyParser.json())
 
 app.post('/todos', (req, res) => {
@@ -50,7 +50,7 @@ app.get('/todos/:id', (req, res) => {
     })
 })
 
-export const server = app.listen(app.get('port'), () => {
+export const server = app.listen(port, () => {
   // @ts-ignore
   console.info(JSON.stringify(process.env.PORT, undefined, 2))
   console.info(JSON.stringify(process.env.HOME, undefined, 2))
