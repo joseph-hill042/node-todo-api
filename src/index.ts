@@ -5,7 +5,7 @@ import { User } from './server/models/user'
 import { Todo } from './server/models/todo'
 
 const app = express()
-const port = process.env.PORT || 3000
+const port = process.env.PORT
 Mongoose.connect()
 const validator = Mongoose.ValidateObjectId()
 
