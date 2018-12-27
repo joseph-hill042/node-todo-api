@@ -51,5 +51,10 @@ app.get('/todos/:id', (req, res) => {
 
 // @ts-ignore
 export const server = app.listen(port, '0.0.0.0', () => {
-  console.info(`Server listening at http://localhost:${port}`)
+  console.info(
+    '%s server listening at http://%s:%s',
+    process.env.NODE_ENV,
+    app.get('host'),
+    app.get('port')
+  )
 })
