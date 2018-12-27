@@ -52,5 +52,5 @@ app.get('/todos/:id', (req, res) => {
 
 export const server = app.listen(app.get('port'), () => {
   // @ts-ignore
-  console.info(JSON.stringify(process.env['PORT'], undefined, 2))
+  console.info(JSON.stringify(process.env.PORT, undefined, 2))
 })
