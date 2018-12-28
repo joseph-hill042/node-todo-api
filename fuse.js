@@ -14,15 +14,21 @@ context(
         plugins: [
           EnvPlugin({
             PORT: '8080',
-            MONGODB_URI: `mongodb://root:${encodeURIComponent(
-              'decl@n1124'
-            )}@ds251598.mlab.com:51598/node-todo-api`,
+            MONGODB_URI: `mongodb://localhost:27017/todoApp`,
+            NODE_ENV: this.isProduction ? 'production' : 'development',
           }),
           this.isProduction &&
             QuantumPlugin({
               bakeApiIntoBundle: 'server',
-              uglify: false,
-              treeshake: false,
+              uglify: true,
+              treeshake: true,
+            }) &&
+            EnvPlugin({
+              PORT: '8080',
+              MONGODB_URI: `mongodb://root:${encodeURIComponent(
+                'decl@n1124'
+              )}@ds251598.mlab.com:51598/node-todo-api`,
+              NODE_ENV: this.isProduction ? 'production' : 'development',
             }),
         ],
       })

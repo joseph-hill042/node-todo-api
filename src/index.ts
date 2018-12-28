@@ -6,7 +6,6 @@ import { Todo } from './server/models/todo'
 
 const app = express()
 const port = process.env.PORT
-console.info(process.env)
 Mongoose.connect()
 const validator = Mongoose.ValidateObjectId()
 
@@ -49,7 +48,23 @@ app.get('/todos/:id', (req, res) => {
       res.status(400).send(err.message)
     })
 })
-
+app.delete('/todos/:id', (req, res) => {
+  const id = req.params.id
+  if (!validator(id)) {
+    return res.status(404).send()
+  }
+  Todo.findByIdAndDelete(id)
+    .then(todo => {
+      if (todo) {
+        res.status(200).send({ todo })
+      } else {
+        res.status(404).send()
+      }
+    })
+    .catch(err => {
+      res.status(400).send({})
+    })
+})
 export const server = app.listen(port, (req, res) => {
   console.info(`API Server running`)
 })
