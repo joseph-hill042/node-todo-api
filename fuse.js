@@ -14,7 +14,9 @@ context(
         plugins: [
           EnvPlugin({
             PORT: '8080',
-            MONGODB_URI: `mongodb://localhost:27017/todoApp`,
+            MONGODB_URI: `mongodb://root:${encodeURIComponent(
+              'decl@n1124'
+            )}@ds251598.mlab.com:51598/node-todo-api`,
             NODE_ENV: this.isProduction ? 'production' : 'development',
           }),
           this.isProduction &&
